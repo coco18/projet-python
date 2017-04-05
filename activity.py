@@ -1,12 +1,16 @@
 
 class activity:
-    """docstring for equipement"""
-    def __init__(self, id, name_activity, id_equipement, city, num_city):
-        self.id = id
-        self.name_activity = name_activity
-        self.id_equipement = id_equipement
-        self.city = city
-        self.num_city = num_city
+    self.id
+    self.name_activity
+    self.level_activity
 
+    """docstring for equipement"""
+    def create_object(self, tab):
+        self.id = tab[4]
+        self.name_activity = tab[5]
+        self.level_activity = tab[9]
     def listActivity(self, id):
         """"list of activity"""
+
+
+#ComInsee,"ComLib",EquipementId,EquNbEquIdentique,ActCode,"ActLib","EquActivitePraticable","EquActivitePratique","EquActiviteSalleSpe","ActNivLib"
