@@ -65,9 +65,15 @@ class Db:
         else:
             return False
 
-   def rechercher(self,table,genre,texte):
+    def rechercher(self,table,genre,texte): #mettre texte e,tre "''"
         c = self.con.cursor()
         query =  "SELECT * FROM {0} where {1} LIKE {2}".format(table, genre, texte)
+        c.execute(query)
+        return c.fetchall()
+
+    def affichertable(self,table):
+        c = self.con.cursor()
+        query =  "SELECT * FROM {0} ".format(table)
         c.execute(query)
         return c.fetchall()
 
