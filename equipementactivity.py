@@ -1,8 +1,9 @@
 
 class EquipementActivity():
     """docstring for EquipementActivity"""
-    self.id_equipement
-    self.id_activity
+    def __init__(self):
+        self.id_equipement = None
+        self.id_activity = None
 
     def create_object(self, tab):
         self.id_equipement = tab[2]

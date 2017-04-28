@@ -1,8 +1,10 @@
 
-class equipement:
-    self.id
-    self.name_equipement
-    self.num_place
+class Equipement:
+    """docstring for """
+    def __init__(self):
+        self.id = None
+        self.name_equipement = None
+        self.num_place = None
 
     """docstring for equipement"""
     def create_object(self, tab):

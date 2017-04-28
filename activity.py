@@ -1,8 +1,10 @@
 
-class activity:
-    self.id
-    self.name_activity
-    self.level_activity
+class Activity:
+    """docstring for """
+    def __init__(self):
+        self.id = None
+        self.name_activity = None
+        self.level_activity = None
 
     """docstring for equipement"""
     def create_object(self, tab):
