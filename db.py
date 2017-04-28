@@ -65,6 +65,12 @@ class Db:
         else:
             return False
 
+   def rechercher(self,table,genre,texte):
+        c = self.con.cursor()
+        query =  "SELECT * FROM {0} where {1} LIKE {2}".format(table, genre, texte)
+        c.execute(query)
+        return c.fetchall()
+
     def commit(self):
         self.con.commit()
 
