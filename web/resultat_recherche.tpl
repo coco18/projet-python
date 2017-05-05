@@ -8,8 +8,8 @@
     <p>
       bonjour
     </p>
-  <form method="GET" action="/search">
-    <select class="" name="activity">
+  <form method="get" action="">
+    <select class="" name="">
       % for o in data:
         <option value="{{o}}">{{o}}</option>
       % end
