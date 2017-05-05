@@ -128,18 +128,20 @@ class Db:
         c = self.con.cursor()
         lcity = "'"+city+"'"
         query = "SELECT id FROM place WHERE city={0} ".format(lcity)
+        c.execute(query)
         tab=[]
         for row in c.fetchall():
             tab.append(row[0])
+        tab = set(tab)
         return tab
 
     def select_place_of_activity_in_city(self, activity, city):
         c = self.con.cursor()
         tab=[]
-        num_place = self.select_num_place(city)
-        print(num_place)
+        num_place = list(self.select_num_place(city))
         for val in num_place:
-            query = "SELECT name_equipement FROM equipement WHERE num_place ={1} and id in(SELECT id_equipement FROM equipementactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(activity, val[0])
+            query = "SELECT name_equipement FROM equipement WHERE num_place ={1} and id in(SELECT id_equipement FROM equipementactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(str(activity), val)
+            c.execute(query)
             for row in c.fetchall():
                 tab.append(row[0])
             tab.sort()
