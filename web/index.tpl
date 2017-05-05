@@ -8,5 +8,10 @@
     <p>
       bonjour
     </p>
+    <select class="" name="">
+      % for o in data:
+        <option value="{{o}}">{{o}}</option>
+      % end
+    </select>
   </body>
 </html>

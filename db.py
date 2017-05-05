@@ -77,6 +77,16 @@ class Db:
         c.execute(query)
         return c.fetchall()
 
+    def select_list_activity(self):
+        c = self.con.cursor()
+        query =  "SELECT name_activity FROM activity "
+        c.execute(query)
+        tab=[]
+        for row in c.fetchall():
+            tab.append(row[0])
+        tab.sort()
+        return tab
+
     def commit(self):
         self.con.commit()
 

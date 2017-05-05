@@ -1,8 +1,11 @@
 from bottle import get, post, request, run, route, static_file, template
+from db import Db
 
 @route('/')
 def index():
-    return template("web/index")
+    DB = Db()
+    data=DB.select_list_activity()
+    return template("web/index", data=data)
 
 @route('/<filepath:path>')
 def server_static(filepath):
