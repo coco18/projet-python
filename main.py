@@ -47,3 +47,4 @@ for row in csv:
         if DB.equipementactivity_exist(ea.id_equipement, ea.id_activity)==False:
             DB.insert_in_equipement_activity(ea)
 DB.commit()
+DB.deconnect()

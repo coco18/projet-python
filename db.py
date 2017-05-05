@@ -1,4 +1,5 @@
 import sqlite3
+import locale
 
 class Db:
     """docstring for data base"""
@@ -85,6 +86,51 @@ class Db:
         for row in c.fetchall():
             tab.append(row[0])
         tab.sort()
+        return tab
+
+    def select_list_city(self):
+        c = self.con.cursor()
+        query =  "SELECT city FROM place "
+        c.execute(query)
+        tab=[]
+        for row in c.fetchall():
+            tab.append(row[0])
+        tab = set(tab)
+        locale.setlocale(locale.LC_ALL, "fr_FR.UTF-8")
+        x = [a for a in sorted(tab, key=locale.strxfrm)]
+        return x
+
+    def select_list_activity_in_city(self,city):
+        c = self.con.cursor()
+        lcity = "'"+city+"'"
+        query =  "SELECT * FROM activity WHERE id in (SELECT id_activity FROM equipementactivity WHERE id_equipement in (SELECT id FROM equipement WHERE num_place in (SELECT id FROM place where city={0})))".format(lcity)
+        c.execute(query)
+        tab=[]
+        for row in c.fetchall():
+            tab.append(row)
+        tab = set(tab)
+        tab = sorted(tab)
+        return tab
+
+    def select_num_place(self, city):
+        c = self.con.cursor()
+        lcity = "'"+city+"'"
+        query = "SELECT id FROM place WHERE city={0} ".format(lcity)
+        tab=[]
+        for row in c.fetchall():
+            tab.append(row[0])
+        return tab
+
+    def select_place_of_activity_in_city(self, activity, city):
+        c = self.con.cursor()
+        tab=[]
+        num_place = self.select_num_place(city)
+        print(num_place)
+        for val in num_place:
+            query = "SELECT name_equipement FROM equipement WHERE num_place ={1} and id in(SELECT id_equipement FROM equipementactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(activity, val[0])
+            for row in c.fetchall():
+                tab.append(row[0])
+            tab.sort()
         return tab
 
     def commit(self):
