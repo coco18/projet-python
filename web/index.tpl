@@ -8,12 +8,12 @@
     <p>
       bonjour
     </p>
-    <select class="" name="">
+  <form method="GET" action="/search">
+    <select class="" name="activity">
       % for o in data:
         <option value="{{o}}">{{o}}</option>
       % end
     </select>
-
     <br/>
     <form class="" action="/city" method="post">
       <select class="" name="city">
@@ -23,5 +23,6 @@
       </select>
       <input type="submit" name="name" value="submit">
     </form>
+
   </body>
 </html>

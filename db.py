@@ -66,13 +66,25 @@ class Db:
         else:
             return False
 
-    def rechercher(self,table,genre,texte): #mettre texte entre "''"
+    def search(self,table,genre,texte): #mettre texte entre "''"
         c = self.con.cursor()
         query =  "SELECT * FROM {0} where {1} LIKE {2}".format(table, genre, texte)
         c.execute(query)
         return c.fetchall()
 
-    def affichertable(self,table):
+    def searchequipement(self,texte):
+        c = self.con.cursor()
+        query = "SELECT name_equipement from equipement where id IN (SELECT id_equipement from equipementactivity where id_activity in (SELECT id FROM activity  where name_activity = {0}))".format(texte)
+        c.execute(query)
+        return c.fetchall()
+
+    def searchcity(self,activity,equipement):
+        c = self.con.cursor()
+        query = "SELECT * from place where id in (SELECT num_place from equipement where name_equipement= {1} and id IN (SELECT id_equipement from equipementactivity where id_activity in (SELECT id FROM activity  where name_activity = {0})))".format(activity,equipement)
+        c.execute(query)
+        return c.fetchall()
+
+    def displaytable(self,table):
         c = self.con.cursor()
         query =  "SELECT * FROM {0} ".format(table)
         c.execute(query)
