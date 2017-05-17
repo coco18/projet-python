@@ -5,6 +5,8 @@
     <title></title>
   </head>
   <body>
-    {{list_equipement}}
+    % for e in list_equipement:
+      <li><a href="/equipement?id={{e.id}}">{{e.name_equipement}}</a></li>
+    % end
   </body>
 </html>

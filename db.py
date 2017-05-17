@@ -1,5 +1,8 @@
 import sqlite3
 import locale
+from activity import Activity
+from place import Place
+from equipement import Equipement
 
 class Db:
     """docstring for data base"""
@@ -119,9 +122,12 @@ class Db:
         c.execute(query)
         tab=[]
         for row in c.fetchall():
-            tab.append(row)
+            a = Activity()
+            a.id = row[0]
+            a.name_activity = row[1]
+            a.level_activity = row[2]
+            tab.append(a)
         tab = set(tab)
-        tab = sorted(tab)
         return tab
 
     def select_num_place(self, city):
@@ -135,17 +141,50 @@ class Db:
         tab = set(tab)
         return tab
 
+    def select_place(self, num_place):
+        c = self.con.cursor()
+        query = "SELECT * FROM place WHERE id={0} ".format(num_place)
+        c.execute(query)
+        p = Place()
+        row = c.fetchone()
+        p.id = row[0]
+        p.name_place = row[1]
+        p.num_street = row[2]
+        p.street = row[3]
+        p.place_says = row[4]
+        p.city = row[5]
+        p.city_code = row[6]
+        p.longitude = row[7]
+        p.latitude = row[8]
+        return p
+
+
     def select_place_of_activity_in_city(self, activity, city):
         c = self.con.cursor()
         tab=[]
         num_place = list(self.select_num_place(city))
         for val in num_place:
-            query = "SELECT name_equipement FROM equipement WHERE num_place ={1} and id in(SELECT id_equipement FROM equipementactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(str(activity), val)
+            query = "SELECT * FROM equipement WHERE num_place ={1} and id in(SELECT id_equipement FROM equipementactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(str(activity), val)
             c.execute(query)
             for row in c.fetchall():
-                tab.append(row[0])
-            tab.sort()
+                e = Equipement()
+                e.id = row[0]
+                e.name_equipement = row[1]
+                e.num_place = row[2]
+                tab.append(e)
         return tab
+
+    def select_equipement(self, idequipement):
+        c = self.con.cursor()
+        query = "SELECT * FROM equipement WHERE id={0} ".format(idequipement)
+        c.execute(query)
+        e = Equipement()
+        row = c.fetchone()
+        e.id = row[0]
+        e.name_equipement = row[1]
+        e.num_place = row[2]
+        return e
+
 
     def commit(self):
         self.con.commit()

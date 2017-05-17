@@ -24,6 +24,15 @@ def city():
     return template("web/activity", list_equipement=list_equipement)
 
 
+@route('/equipement', method='GET')
+def city():
+    DB = Db()
+    idequipement = request.query.id
+    e = DB.select_equipement(idequipement)
+    place = DB.select_place(e.num_place)
+    return template("web/equipement", equipement=e, place=place)
+
+
 @route('/search', method='GET')
 def default():
     DB = Db()

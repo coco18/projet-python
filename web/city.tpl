@@ -7,8 +7,8 @@
   <body>
     <h1>Liste des activtées à {{city}}</h1>
     <ul>
-      % for o in list_activity:
-        <li><a href="/activity?activity={{o[0]}}&city={{city}}">{{o[1]}}</a></li>
+      % for a in list_activity:
+        <li><a href="/activity?activity={{a.id}}&city={{city}}">{{a.name_activity}}</a></li>
       % end
     </ul>
   </body>
