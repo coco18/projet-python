@@ -20,11 +20,6 @@ class Db:
         cur.execute("DROP TABLE IF EXISTS equipmentactivity")
         cur.execute("CREATE TABLE equipmentactivity(id_equipment integer, id_activity integer, PRIMARY KEY (id_equipment,id_activity), FOREIGN KEY(id_equipment) REFERENCES equipment(id), FOREIGN KEY(id_activity) REFERENCES activity(id))")
 
-    def insert_in_place(self, place):
-        c = self.con.cursor()
-        insert_query = "INSERT INTO place(id, name_place, num_street, street, place_says, city, city_code, longitude, latitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        c.execute(insert_query, (place.id, place.name_place, place.num_street, place.street, place.place_says, place.city, place.city_code, place.longitude, place.latitude))
-
 
     def search(self,table,genre,texte): #mettre texte entre "''"
         c = self.con.cursor()
@@ -60,6 +55,7 @@ class Db:
 
 
 
+<<<<<<< HEAD
     def select_num_place(self, city):
         c = self.con.self)
         return tab
@@ -82,6 +78,8 @@ class Db:
         return p
 
 
+=======
+>>>>>>> 13f926ac970abdfdc2f9002e26ea7b900dd18245
     def select_place_of_activity_in_city(self, activity, city):
         c = self.con.cursor()
         tab=[]
