@@ -1,9 +1,9 @@
 from db import Db
 from FileCSV import FileCSV
 from place import Place
-from equipement import Equipement
+from equipment import Equipment
 from activity import Activity
-from equipementactivity import EquipementActivity
+from equipmentactivity import EquipmentActivity
 
 DB = Db()
 DB.create_table()
@@ -15,16 +15,16 @@ csv = file.print_line_except_first()
 for row in csv:
     p = Place()
     p.create_object(row)
-    DB.insert_in_place(p)
+    p.insert(DB)
 DB.commit()
 
-#Insert in db equipement
+#Insert in db equipment
 file = FileCSV('fichiersCSV/equipements.csv')
 csv = file.print_line_except_first()
 for row in csv:
-    e = Equipement()
+    e = Equipment()
     e.create_object(row)
-    DB.insert_in_equipement(e)
+    e.insert(DB)
 DB.commit()
 
 #Insert in db of activity
@@ -35,7 +35,7 @@ for row in csv:
     a.create_object(row)
     if not(not(row[5])):
         if a.exist_in_DB(DB)==False:
-            a.insert(DB)
+            a.insert_in_DB(DB)
 DB.commit()
 
 #Insert in db of equipement-activity
