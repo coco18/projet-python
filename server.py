@@ -48,12 +48,17 @@ def city():
 @route('/search', method='GET')
 def default():
     DB = Db()
-    if(request.query.activity) :
-        act = request.query.activity
-        data=Equipment().search(DB,"'"+act+"'")
-        return template("web/resultat_recherche.tpl",data = data)
-    #creer un get equipment ! pour fournir l'adresse
-    return "bouhouhou"
+    act = request.query.activity
+    data=Equipment().search(DB,"'"+act+"'")
+    return template("web/resultat_recherche.tpl",data = data)
+
+@route('/search2', method='Post')
+def default():
+    DB = Db()
+    eq = request.query.equipment
+    act = request.query.activity
+    data=Equipment().select_place_of_activity_in_city(DB,"'"+eq+"'")
+    return template("web/resultat.tpl",data = data)
 
 @route('/<filepath:path>')
 def server_static(filepath):

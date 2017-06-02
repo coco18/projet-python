@@ -17,7 +17,7 @@
     </form>
     <br/>
     <br/>
-    <h1>Recherche des activitées disponnible dans ma ville :</h1>
+    <h1>Recherche des activités disponibles dans ma ville :</h1>
     <form class="" action="/city" method="post">
       <select class="" name="city">
         % for o in data_city:
