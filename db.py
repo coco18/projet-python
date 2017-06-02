@@ -26,26 +26,9 @@ class Db:
         c.execute(insert_query, (place.id, place.name_place, place.num_street, place.street, place.place_says, place.city, place.city_code, place.longitude, place.latitude))
 
 
-    def insert_in_equipement(self, equipement):
-        c = self.con.cursor()
-        insert_query = "INSERT INTO equipement(id, name_equipement, num_place) VALUES (?, ?, ?)"
-        c.execute(insert_query, (equipement.id, equipement.name_equipement, equipement.num_place))
-
-
-
-
-
-
-
     def search(self,table,genre,texte): #mettre texte entre "''"
         c = self.con.cursor()
         query =  "SELECT * FROM {0} where {1} LIKE {2}".format(table, genre, texte)
-        c.execute(query)
-        return c.fetchall()
-
-    def searchequipement(self,texte):
-        c = self.con.cursor()
-        query = "SELECT name_equipement from equipement where id IN (SELECT id_equipement from equipementactivity where id_activity in (SELECT id FROM activity  where name_activity = {0}))".format(texte)
         c.execute(query)
         return c.fetchall()
 
@@ -113,18 +96,6 @@ class Db:
                 e.num_place = row[2]
                 tab.append(e)
         return tab
-
-    def select_equipement(self, idequipement):
-        c = self.con.cursor()
-        query = "SELECT * FROM equipement WHERE id={0} ".format(idequipement)
-        c.execute(query)
-        e = Equipement()
-        row = c.fetchone()
-        e.id = row[0]
-        e.name_equipement = row[1]
-        e.num_place = row[2]
-        return e
-
 
     def commit(self):
         self.con.commit()
