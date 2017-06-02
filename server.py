@@ -11,25 +11,31 @@ def index():
 @route('/city', method='POST')
 def city():
     DB = Db()
+    a = Activity()
     city = request.forms.city
-    list_activity = DB.select_list_activity_in_city(city)
+    list_activity = a.select_list_in_city(DB, city)
+    DB.deconnect()
     return template("web/city", city=city, list_activity= list_activity)
 
 @route('/activity', method='GET')
 def city():
     DB = Db()
+    p = Place()
     activity = request.query.activity
     city = request.query.city
-    list_equipement = DB.select_place_of_activity_in_city(activity, city)
-    return template("web/activity", list_equipement=list_equipement)
+    list_equipment = p.select_place_of_activity_in_city(DB, activity, city)
+    DB.deconnect()
+    return template("web/activity", list_equipment=list_equipment)
 
 
 @route('/equipement', method='GET')
 def city():
     DB = Db()
+    p = Place()
     idequipement = request.query.id
     e = DB.select_equipement(idequipement)
-    place = DB.select_place(e.num_place)
+    place = p.select_place(DB, e.num_place)
+    DB.deconnect()
     return template("web/equipement", equipement=e, place=place)
 
 

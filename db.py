@@ -53,33 +53,6 @@ class Db:
         x = [a for a in sorted(tab, key=locale.strxfrm)]
         return x
 
-
-
-<<<<<<< HEAD
-    def select_num_place(self, city):
-        c = self.con.self)
-        return tab
-
-    def select_place(self, num_place):
-        c = self.con.cursor()
-        query = "SELECT * FROM place WHERE id={0} ".format(num_place)
-        c.execute(query)
-        p = Place()
-        row = c.fetchone()
-        p.id = row[0]
-        p.name_place = row[1]
-        p.num_street = row[2]
-        p.street = row[3]
-        p.place_says = row[4]
-        p.city = row[5]
-        p.city_code = row[6]
-        p.longitude = row[7]
-        p.latitude = row[8]
-        return p
-
-
-=======
->>>>>>> 13f926ac970abdfdc2f9002e26ea7b900dd18245
     def select_place_of_activity_in_city(self, activity, city):
         c = self.con.cursor()
         tab=[]
