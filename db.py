@@ -2,7 +2,7 @@ import sqlite3
 import locale
 from activity import Activity
 from place import Place
-from equipement import Equipement
+from equipment import Equipment
 
 class Db:
     """docstring for data base"""
@@ -13,8 +13,8 @@ class Db:
         cur = self.con.cursor()
         cur.execute("DROP TABLE IF EXISTS place")
         cur.execute("CREATE TABLE place(id integer PRIMARY KEY, name_place text, num_street integer, street text, place_says text, city text, city_code integer, longitude integer, latitude integer)")
-        cur.execute("DROP TABLE IF EXISTS equipement")
-        cur.execute("CREATE TABLE equipement(id integer PRIMARY KEY, name_equipement text, num_place integer, FOREIGN KEY(num_place) REFERENCES place(id))")
+        cur.execute("DROP TABLE IF EXISTS equipment")
+        cur.execute("CREATE TABLE equipment(id integer PRIMARY KEY, name_equipment text, num_place integer, FOREIGN KEY(num_place) REFERENCES place(id))")
         cur.execute("DROP TABLE IF EXISTS activity")
         cur.execute("CREATE TABLE activity(id integer PRIMARY KEY, name_activity text, level_activity text)")
         cur.execute("DROP TABLE IF EXISTS equipmentactivity")
@@ -27,9 +27,9 @@ class Db:
         c.execute(query)
         return c.fetchall()
 
-    def searchcity(self,activity,equipement):
+    def searchcity(self,activity,equipment):
         c = self.con.cursor()
-        query = "SELECT * from place where id in (SELECT num_place from equipement where name_equipement= {1} and id IN (SELECT id_equipement from equipementactivity where id_activity in (SELECT id FROM activity  where name_activity = {0})))".format(activity,equipement)
+        query = "SELECT * from place where id in (SELECT num_place from equipment where name_equipment= {1} and id IN (SELECT id_equipment from equipmentactivity where id_activity in (SELECT id FROM activity  where name_activity = {0})))".format(activity,equipment)
         c.execute(query)
         return c.fetchall()
 

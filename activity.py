@@ -29,15 +29,15 @@ class Activity:
         insert_query = "INSERT INTO activity(id, name_activity, level_activity) VALUES (?, ?, ?)"
         c.execute(insert_query, (activity.id, activity.name_activity, activity.level_activity))
 
-     def select_list(self, DB):
-         c = DB.con.cursor()
-         query =  "SELECT name_activity FROM activity "
-         c.execute(query)
-         tab=[]
-         for row in c.fetchall():
-             tab.append(row[0])
-         tab.sort()
-         return tab
+    def select_list(self, DB):
+        c = DB.con.cursor()
+        query =  "SELECT name_activity FROM activity "
+        c.execute(query)
+        tab=[]
+        for row in c.fetchall():
+            tab.append(row[0])
+        tab.sort()
+        return tab
 
     def select_list_in_city(self, DB, city):
         c = DB.con.cursor()

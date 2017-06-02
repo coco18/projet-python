@@ -1,5 +1,8 @@
 from bottle import get, post, request, run, route, static_file, template
 from db import Db
+from activity import Activity
+from place import Place
+from equipment import Equipment
 
 @route('/')
 def index():

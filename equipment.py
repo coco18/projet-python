@@ -26,7 +26,7 @@ class Equipment:
         return c.fetchall()
 
     """select equipment in database"""
-    def select(self,db idequipment):
+    def select(self, db, idequipment):
         c = db.con.cursor()
         query = "SELECT * FROM equipment WHERE id={0} ".format(idequipment)
         c.execute(query)
