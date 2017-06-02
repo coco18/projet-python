@@ -20,12 +20,6 @@ class Db:
         cur.execute("DROP TABLE IF EXISTS equipementactivity")
         cur.execute("CREATE TABLE equipementactivity(id_equipement integer, id_activity integer, PRIMARY KEY (id_equipement,id_activity), FOREIGN KEY(id_equipement) REFERENCES equipement(id), FOREIGN KEY(id_activity) REFERENCES activity(id))")
 
-    def insert_in_place(self, place):
-        c = self.con.cursor()
-        insert_query = "INSERT INTO place(id, name_place, num_street, street, place_says, city, city_code, longitude, latitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        c.execute(insert_query, (place.id, place.name_place, place.num_street, place.street, place.place_says, place.city, place.city_code, place.longitude, place.latitude))
-
-
     def insert_in_activity(self, activity):
         c = self.con.cursor()
         insert_query = "INSERT INTO activity(id, name_activity, level_activity) VALUES (?, ?, ?)"
@@ -117,35 +111,6 @@ class Db:
             tab.append(a)
         tab = set(tab)
         return tab
-
-    def select_num_place(self, city):
-        c = self.con.cursor()
-        lcity = "'"+city+"'"
-        query = "SELECT id FROM place WHERE city={0} ".format(lcity)
-        c.execute(query)
-        tab=[]
-        for row in c.fetchall():
-            tab.append(row[0])
-        tab = set(tab)
-        return tab
-
-    def select_place(self, num_place):
-        c = self.con.cursor()
-        query = "SELECT * FROM place WHERE id={0} ".format(num_place)
-        c.execute(query)
-        p = Place()
-        row = c.fetchone()
-        p.id = row[0]
-        p.name_place = row[1]
-        p.num_street = row[2]
-        p.street = row[3]
-        p.place_says = row[4]
-        p.city = row[5]
-        p.city_code = row[6]
-        p.longitude = row[7]
-        p.latitude = row[8]
-        return p
-
 
     def select_place_of_activity_in_city(self, activity, city):
         c = self.con.cursor()
