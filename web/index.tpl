@@ -9,7 +9,7 @@
     <form method="GET" action="/search">
       <select class="" name="activity">
         % for o in data:
-          <option value="{{o}}">{{o}}</option>
+          <option value="{{o.name_activity}}">{{o.name_activity}}</option>
         % end
       </select>
       <input type="submit" name="name" value="Rechercher">
@@ -37,10 +37,10 @@
       </select>
       <select class="" name="activity">
         % for o in data:
-          <option value="{{o}}">{{o}}</option>
+          <option value="{{o.id}}">{{o.name_activity}}</option>
         % end
       </select>
-      <input type="submit" name="name" value="Rechercher">
+      <input type="submit" value="Rechercher">
     </form>
 
   </body>

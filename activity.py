@@ -1,3 +1,4 @@
+from operator import itemgetter, attrgetter, methodcaller
 
 class Activity:
     """docstring for """
@@ -31,13 +32,17 @@ class Activity:
 
     def select_list(self, DB):
         c = DB.con.cursor()
-        query =  "SELECT name_activity FROM activity "
+        query =  "SELECT * FROM activity "
         c.execute(query)
         tab=[]
         for row in c.fetchall():
-            tab.append(row[0])
-        tab.sort()
-        return tab
+            a = Activity()
+            a.id = row[0]
+            a.name_activity = row[1]
+            a.level_activity = row[2]
+            tab.append(a)
+
+        return sorted(tab, key=attrgetter('name_activity'))
 
     def select_list_in_city(self, DB, city):
         c = DB.con.cursor()
@@ -51,7 +56,6 @@ class Activity:
             a.name_activity = row[1]
             a.level_activity = row[2]
             tab.append(a)
-        tab = set(tab)
-        return tab
+        return sorted(tab, key=attrgetter('name_activity'))
 
 #ComInsee,"ComLib",EquipementId,EquNbEquIdentique,ActCode,"ActLib","EquActivitePraticable","EquActivitePratique","EquActiviteSalleSpe","ActNivLib"
