@@ -34,17 +34,17 @@ for row in csv:
     a = Activity()
     a.create_object(row)
     if not(not(row[5])):
-        if DB.activity_exist(a.id)==False:
-            DB.insert_in_activity(a)
+        if a.exist_in_DB(DB)==False:
+            a.insert(DB)
 DB.commit()
 
 #Insert in db of equipement-activity
 csv = file.print_line_except_first()
 for row in csv:
-    ea = EquipementActivity()
+    ea = EquipmentActivity()
     ea.create_object(row)
     if not(not(row[5])):
-        if DB.equipementactivity_exist(ea.id_equipement, ea.id_activity)==False:
-            DB.insert_in_equipement_activity(ea)
+        if ea.exist_in_DB(DB)==False:
+            ea.insert_in_DB(DB)
 DB.commit()
 DB.deconnect()
