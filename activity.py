@@ -15,11 +15,11 @@ class Activity:
     def exist_in_DB(self, DB):
         c = DB.con.cursor()
         insert_query = "SELECT id FROM activity WHERE id=(?)"
-        c.execute(insert_query, (self.num_activity,))
+        c.execute(insert_query, (self.id,))
         tmp=None
         for row in c:
             tmp = row[0]
-        if tmp==int(self.num_activity):
+        if tmp==int(self.id):
             return True
         else:
             return False
@@ -27,7 +27,7 @@ class Activity:
     def insert_in_DB(self, DB):
         c = DB.con.cursor()
         insert_query = "INSERT INTO activity(id, name_activity, level_activity) VALUES (?, ?, ?)"
-        c.execute(insert_query, (activity.id, activity.name_activity, activity.level_activity))
+        c.execute(insert_query, (self.id, self.name_activity, self.level_activity))
 
     def select_list(self, DB):
         c = DB.con.cursor()
