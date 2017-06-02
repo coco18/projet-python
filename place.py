@@ -44,7 +44,7 @@ class Place:
         p.latitude = row[8]
         return p
 
-    def select(self, db, city):
+    def select_id_by(self, db, city):
         c = db.con.cursor()
         lcity = "'"+city+"'"
         query = "SELECT id FROM place WHERE city={0} ".format(lcity)
