@@ -7,8 +7,11 @@ from equipment import Equipment
 @route('/')
 def index():
     DB = Db()
-    data=DB.select_list_activity()
-    data_city = DB.select_list_city()
+    a = Activity()
+    p = Place()
+    data=a.select_list(DB)
+    data_city = p.select_list_city(DB)
+    DB.deconnect()
     return template("web/index", data=data, data_city =data_city)
 
 @route('/city', method='POST')

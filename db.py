@@ -1,5 +1,4 @@
 import sqlite3
-import locale
 from activity import Activity
 from place import Place
 from equipment import Equipment

@@ -1,4 +1,4 @@
-
+import locale
 
 class Place:
     """docstring for """
