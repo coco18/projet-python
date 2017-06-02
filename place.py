@@ -28,6 +28,7 @@ class Place:
 
     """select for place"""
     def select(self, db, num_place):
+        print(num_place)
         c = db.con.cursor()
         query = "SELECT * FROM place WHERE id={0} ".format(num_place)
         c.execute(query)

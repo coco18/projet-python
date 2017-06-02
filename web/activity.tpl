@@ -5,8 +5,8 @@
     <title></title>
   </head>
   <body>
-    % for e in list_equipement:
-      <li><a href="/equipement?id={{e.id}}">{{e.name_equipement}}</a></li>
+    % for e in list_equipment:
+      <li><a href="/equipment?id={{e.id}}">{{e.name_equipment}}</a></li>
     % end
   </body>
 </html>

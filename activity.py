@@ -42,7 +42,7 @@ class Activity:
     def select_list_in_city(self, DB, city):
         c = DB.con.cursor()
         lcity = "'"+city+"'"
-        query =  "SELECT * FROM activity WHERE id in (SELECT id_activity FROM equipementactivity WHERE id_equipement in (SELECT id FROM equipement WHERE num_place in (SELECT id FROM place where city={0})))".format(lcity)
+        query =  "SELECT * FROM activity WHERE id in (SELECT id_activity FROM equipmentactivity WHERE id_equipment in (SELECT id FROM equipment WHERE num_place in (SELECT id FROM place where city={0})))".format(lcity)
         c.execute(query)
         tab=[]
         for row in c.fetchall():

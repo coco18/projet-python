@@ -30,21 +30,19 @@ class Equipment:
         c = db.con.cursor()
         query = "SELECT * FROM equipment WHERE id={0} ".format(idequipment)
         c.execute(query)
-        e = equipment()
         row = c.fetchone()
-        e.id = row[0]
-        e.name_equipment = row[1]
-        e.num_place = row[2]
-        return e
+        self.id = row[0]
+        self.name_equipment = row[1]
+        self.num_place = row[2]
 
-    def select_place_of_activity_in_city(self, activity, city):
-        c = self.con.cursor()
+    def select_place_of_activity_in_city(self, DB, activity, city):
+        c = DB.con.cursor()
         tab=[]
         lcity = "'"+city+"'"
         query = "SELECT * FROM equipment WHERE num_place in (SELECT id FROM place WHERE city={1}) and id in(SELECT id_equipment FROM equipmentactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(str(activity), lcity)
         c.execute(query)
         for row in c.fetchall():
-            e = equipment()
+            e = Equipment()
             e.id = row[0]
             e.name_equipment = row[1]
             e.num_place = row[2]

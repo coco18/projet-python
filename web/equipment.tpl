@@ -11,7 +11,7 @@
           Nom de l'équipement :
         </td>
         <td>
-          {{equipement.name_equipement}}
+          {{equipment.name_equipment}}
         </td>
       </tr>
       <tr>
