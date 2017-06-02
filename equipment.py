@@ -26,7 +26,7 @@ class Equipment:
         return c.fetchall()
 
     """select equipment in database"""
-    def select(self, db, idequipment):
+    def select(self,db idequipment):
         c = db.con.cursor()
         query = "SELECT * FROM equipment WHERE id={0} ".format(idequipment)
         c.execute(query)
@@ -42,12 +42,12 @@ class Equipment:
         tab=[]
         num_place = list(self.select_num_place(city))
         for val in num_place:
-            query = "SELECT * FROM equipement WHERE num_place ={1} and id in(SELECT id_equipement FROM equipementactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(str(activity), val)
+            query = "SELECT * FROM equipment WHERE num_place ={1} and id in(SELECT id_equipment FROM equipmentactivity WHERE id_activity in(SELECT id FROM activity WHERE id={0}))".format(str(activity), val)
             c.execute(query)
             for row in c.fetchall():
-                e = Equipement()
+                e = equipment()
                 e.id = row[0]
-                e.name_equipement = row[1]
+                e.name_equipment = row[1]
                 e.num_place = row[2]
                 tab.append(e)
         return tab
