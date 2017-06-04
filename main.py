@@ -1,9 +1,9 @@
-from db import Db
-from FileCSV import FileCSV
-from place import Place
-from equipment import Equipment
-from activity import Activity
-from equipmentactivity import EquipmentActivity
+from db.db import Db
+from db.FileCSV import FileCSV
+from model.place import Place
+from model.equipment import Equipment
+from model.activity import Activity
+from model.equipmentactivity import EquipmentActivity
 
 DB = Db()
 DB.create_table()

@@ -1,8 +1,8 @@
-from bottle import get, post, request, run, route, static_file, template
-from db import Db
-from activity import Activity
-from place import Place
-from equipment import Equipment
+from web.bottle import get, post, request, run, route, static_file, template
+from db.db import Db
+from model.activity import Activity
+from model.place import Place
+from model.equipment import Equipment
 
 @route('/')
 def index():

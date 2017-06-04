@@ -1,12 +1,12 @@
 import sqlite3
-from activity import Activity
-from place import Place
-from equipment import Equipment
+from model.activity import Activity
+from model.place import Place
+from model.equipment import Equipment
 
 class Db:
     """docstring for data base"""
     def __init__(self):
-        self.con = sqlite3.connect("data.db")
+        self.con = sqlite3.connect("db/data.db")
 
     def create_table(self):
         cur = self.con.cursor()
