@@ -21,9 +21,16 @@ class Equipment:
     """search equipment in database"""
     def search(self,db,texte):
         c = db.con.cursor()
-        query = "SELECT name_equipment from equipment where id IN (SELECT id_equipment from equipmentactivity where id_activity in (SELECT id FROM activity  where name_activity = {0}))".format(texte)
+        query = "SELECT * from equipment where id IN (SELECT id_equipment from equipmentactivity where id_activity in (SELECT id FROM activity  where name_activity = {0}))".format(texte)
         c.execute(query)
-        return c.fetchall()
+        tab=[]
+        for row in c.fetchall():
+            e = Equipment()
+            e.id = row[0]
+            e.name_equipment = row[1]
+            e.num_place = row[2]
+            tab.append(e)
+        return tab
 
     """select equipment in database"""
     def select(self, db, idequipment):

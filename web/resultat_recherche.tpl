@@ -5,13 +5,11 @@
     <title></title>
   </head>
   <body>
-  <form method="post" action="/search2">
-    <select class="" name="equipment">
-      % for o in data:
-        <option value="{{o}}">{{o}}</option>
+    <h1>Liste des equipment pour {{act}}</h1>
+    <ul>
+      % for e in list_equipment:
+        <li><a href="/equipment?id={{e.id}}">{{e.name_equipment}}</a></li>
       % end
-    </select>
-    <input type="submit" value="Rechercher">
-  </form>
+    </ul>
   </body>
 </html>
