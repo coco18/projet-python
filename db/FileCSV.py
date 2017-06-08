@@ -1,7 +1,11 @@
 import csv
 
 class FileCSV:
+  	"""Documentation for File CSV"""
 	def __init__(self,name):
+	"""Initialization of fileCSV
+	:param name: name of the file we want to convert
+	:type name: String"""
 		self.name = name
 
 	#return tab of CSV file

@@ -1,27 +1,41 @@
 from model.place import Place
 
 class Equipment:
-    """docstring for """
+    """docstring for equipment"""
     def __init__(self):
+        """Initialization of the equipment"""
         self.id = None
         self.name_equipment = None
         self.num_place = None
         self.place = None
 
-    """docstring for equipment"""
     def create_object(self, tab):
+      	"""Creation of the equipment
+    	:param tab: Array with the attribute of an equipment
+    	:type tab: array 
+    	"""
         self.id = tab[4]
         self.name_equipment = tab[5]
         self.num_place = tab[2]
 
-    """insert equipment in database"""
     def insert(self, db):
+        """insert the equipment in a table
+    	:param db: the database who contains the table
+    	:type db: base
+    	"""
         c = db.con.cursor()
         insert_query = "INSERT INTO equipment(id, name_equipment, num_place) VALUES (?, ?, ?)"
         c.execute(insert_query, (self.id, self.name_equipment, self.num_place))
 
-    """search equipment in database"""
     def search(self,db,texte):
+        """Return all the equipments with their place for an activity
+    	:param db: the database who contains the table
+    	:type db: base
+    	:param texte: name of the activity
+    	:type texte: String
+    	:return tab: array with the equipment
+    	:rtype tab : Equipment[]
+    	"""
         c = db.con.cursor()
         query = "SELECT * from equipment, place where equipment.num_place=place.id and equipment.id IN (SELECT id_equipment from equipmentactivity where id_activity in (SELECT id FROM activity  where name_activity = {0}))".format(texte)
         c.execute(query)
@@ -44,8 +58,13 @@ class Equipment:
             tab.append(e)
         return tab
 
-    """select equipment in database"""
     def select(self, db, idequipment):
+        """Assign the value of the equipment passes in parameters to the actual equipment
+    	:param db: the base who contains the table
+    	:type db: base
+    	:param idequipment: the identifiant of the equipment 
+    	:type idequipment: int
+    	"""
         c = db.con.cursor()
         query = "SELECT * FROM equipment, place WHERE equipment.id={0} and equipment.num_place=place.id".format(idequipment)
         c.execute(query)
@@ -66,6 +85,14 @@ class Equipment:
         self.place.latitude = row[10]
 
     def select_place_of_activity_in_city(self, DB, activity, city):
+        """Give the existing equipment where you can practice an activity in a city
+    	:param db: the base who contains the table
+    	:type db: base
+    	:param city: the name of the city 
+    	:type city: name
+    	:returns: tab
+    	:rtype: Equipment[] 
+    	"""
         c = DB.con.cursor()
         tab=[]
         lcity = "'"+city+"'"

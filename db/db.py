@@ -9,6 +9,7 @@ class Db:
         self.con = sqlite3.connect("db/data.db")
 
     def create_table(self):
+    """create the table to create our database"""
         cur = self.con.cursor()
         cur.execute("DROP TABLE IF EXISTS place")
         cur.execute("CREATE TABLE place(id integer PRIMARY KEY, name_place text, num_street integer, street text, place_says text, city text, city_code integer, longitude integer, latitude integer)")
@@ -20,13 +21,32 @@ class Db:
         cur.execute("CREATE TABLE equipmentactivity(id_equipment integer, id_activity integer, PRIMARY KEY (id_equipment,id_activity), FOREIGN KEY(id_equipment) REFERENCES equipment(id), FOREIGN KEY(id_activity) REFERENCES activity(id))")
 
 
-    def search(self,table,genre,texte): #mettre texte entre "''"
+#generic search
+    def search(self,table,genre,texte): #put texte between "''"
+        """Return all the object from a table who contains a specific value
+    	:param table: the table choose
+    	:type table: String
+    	:param genre: the column we have to search the value
+    	:type genre: String
+    	:param texte: the value we want to search
+    	:type texte: String
+    	:return tab: array with the object
+    	:rtype tab : Object[]
+    	"""
         c = self.con.cursor()
         query =  "SELECT * FROM {0} where {1} LIKE {2}".format(table, genre, texte)
         c.execute(query)
         return c.fetchall()
 
     def searchcity(self,activity,equipment):
+    	"""Return the place where you can find an activity cith a specific equipment
+    	:param activity: the activity choose
+    	:type activity: String
+    	:param equipment: the equipment choose
+    	:type equipment: String
+    	:return c: value return by the query
+    	:rtype c : ?
+    	"""
         c = self.con.cursor()
         query = "SELECT * from place where id in (SELECT num_place from equipment where name_equipment= {1} and id IN (SELECT id_equipment from equipmentactivity where id_activity in (SELECT id FROM activity  where name_activity = {0})))".format(activity,equipment)
         c.execute(query)
