@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="css/main.css" />
+
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 	</head>
 	<body>
@@ -19,10 +20,32 @@
 
                 <h2>{{acivity.name_activity}} à {{city}}</h2>
     						<header>
+									<ul>
                   % for e in list_equipment:
-                    <li><a href="/equipment?id={{e.id}}">{{e.name_equipment}}</a></li>
+                    <li class="afficherDetailEquipement" id="{{e.id}}"><a  href="/equipment?id={{e.id}}">{{e.name_equipment}} à {{e.place.city}}</a>
+										<div class="detailEquipement">
+											<table>
+									      <tr>
+									        <td>
+									          Nom de l'équipement :
+									        </td>
+									        <td>
+									          {{e.name_equipment}}
+									        </td>
+									      </tr>
+									      <tr>
+									        <td>
+									          Adresse :
+									        </td>
+									        <td>
+									          {{e.place.num_street}} {{e.place.street}}
+									          {{e.place.city_code}} {{e.place.city}}
+									        </td>
+									      </tr>
+									    </table>
+										</div></li>
                   % end
-
+								</ul>
     						</header>
     				</article>
 
@@ -35,7 +58,18 @@
     			<script src="js/util.js"></script>
     			<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     			<script src="js/main.js"></script>
+					<script type="text/javascript">
+					$(document).ready(function(){
 
+					$(".detailEquipement").toggle();
+					$(".afficherDetailEquipement").click(function (event) {
+						index = $(this).val("id")
+							alert($(this).position());
+					//	$(event.target.id).children(".detailEquipement").css("display", "block");
+						event.preventDefault();
+					});
+					});
+					</script>
 
 					<section id="footer">
 

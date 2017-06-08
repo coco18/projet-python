@@ -46,15 +46,15 @@ class Equipment:
             e.name_equipment = row[1]
             e.num_place = row[2]
             e.place = Place()
-            e.place.id = row[2]
-            e.place.name_place = row[3]
-            e.place.num_street = row[4]
-            e.place.street = row[5]
-            e.place.place_says = row[6]
-            e.place.city = row[7]
-            e.place.city_code = row[8]
-            e.place.longitude = row[9]
-            e.place.latitude = row[10]
+            e.place.id = row[3]
+            e.place.name_place = row[4]
+            e.place.num_street = row[5]
+            e.place.street = row[6]
+            e.place.place_says = row[7]
+            e.place.city = row[8]
+            e.place.city_code = row[9]
+            e.place.longitude = row[10]
+            e.place.latitude = row[11]
             tab.append(e)
         return tab
 
@@ -68,21 +68,21 @@ class Equipment:
         c = db.con.cursor()
         query = "SELECT * FROM equipment, place WHERE equipment.id={0} and equipment.num_place=place.id".format(idequipment)
         c.execute(query)
-        print(c)
         row = c.fetchone()
         self.id = row[0]
         self.name_equipment = row[1]
         self.num_place = row[2]
         self.place = Place()
-        self.place.id = row[2]
-        self.place.name_place = row[3]
-        self.place.num_street = row[4]
-        self.place.street = row[5]
-        self.place.place_says = row[6]
-        self.place.city = row[7]
-        self.place.city_code = row[8]
-        self.place.longitude = row[9]
-        self.place.latitude = row[10]
+        self.place.id = row[3]
+        self.place.name_place = row[4]
+        self.place.num_street = row[5]
+        self.place.street = row[6]
+        self.place.place_says = row[7]
+        self.place.city = row[8]
+        self.place.city_code = row[9]
+        self.place.longitude = row[10]
+        self.place.latitude = row[11]
+        print(self.place)
 
     def select_place_of_activity_in_city(self, DB, activity, city):
         """Give the existing equipment where you can practice an activity in a city
@@ -104,15 +104,15 @@ class Equipment:
             e.name_equipment = row[1]
             e.num_place = row[2]
             e.place = Place()
-            e.place.id = row[2]
-            e.place.name_place = row[3]
-            e.place.num_street = row[4]
-            e.place.street = row[5]
-            e.place.place_says = row[6]
-            e.place.city = row[7]
-            e.place.city_code = row[8]
-            e.place.longitude = row[9]
-            e.place.latitude = row[10]
+            e.place.id = row[3]
+            e.place.name_place = row[4]
+            e.place.num_street = row[5]
+            e.place.street = row[6]
+            e.place.place_says = row[7]
+            e.place.city = row[8]
+            e.place.city_code = row[9]
+            e.place.longitude = row[10]
+            e.place.latitude = row[11]
             tab.append(e)
         return tab
 #ComInsee,ComLib,InsNumeroInstall,InsNom,equipmentId,EquNom,EquNomBatiment,equipmentTypeLib,equipmentFiche,FamilleFicheLib,GestionTypeProprietairePrincLib,GestionTypeGestionnairePrincLib,GestionTypeProprietaireSecLib,GestionTypeGestionnaireSecLib,EquGestionDSP,EquDouche,EquEclairage,EquErpCTS,EquErpREF,EquErpL,EquErpN,EquErpO,EquErpOA,EquErpP,EquErpPA,EquErpR,EquErpRPE,EquErpSG,EquErpX,EquErpCategorie,EquAnneeService,AnneeServiceLib,EquNbPlaceTribune,NatureSolLib,NatureLibelle,EquHauteurEvolution,EquLongueurEvolution,EquLargeurEvolution,EquSurfaceEvolution,EquHauteurSurfaceEvo,EquNbCouloirPiste,EquNbVestiaireSpo,EquVestiaireSpoChauffe,EquNbVestiaireArbitre,EquSanitaireSportif,EquSanitairePublic,EquOuvertSaison,EquProximite,EquSono,EquTableauFixe,EquChrono,EquAmenagementAucun,EquUtilScolaire,EquUtilClub,EquUtilAutre,EquUtilIndividuel,EquUtilPerformance,EquUtilFormation,EquUtilRecreation,EquDateDernierTravauxReal,AnneeTravauxRealLibelle,EquDateDernierTravauxAucun,EquTravauxRealConformite,EquTravauxRealNorme,EquTravauxRealUsager,EquTravauxRealDegradation,EquTravauxRealVetuste,EquAccesHandimAire,EquAccesHandimTribune,EquAccesHandimVestiaire,EquAccesHandimSaniSpo,EquAccesHandimSaniPub,EquAccesHandimAucun,EquAccesHandisAucun,EquAccesHandisAire,EquAccesHandisTribune,EquAccesHandisVestiaire,EquAccesHandisSaniSpo,EquAccesHandisSaniPub,EquAccueilClub,EquAccueilSalle,EquAccueilBuvette,EquAccueilDopage,EquAccueilMedic,EquAccueilInfirmerie,EquAccueilBureau,EquAccueilReception,EquAccueilLocalRangement,EquAccueilAutre,EquAccueilAucun,EquChauffageNon,EquChauffageFuel,EquChauffageGaz,EquChauffageElectricite,EquChauffageSolaire,EquChauffageAutre,EquConfortSauna,EquConfortBainBouillonant,EquConfortBainVapeur,EquConfortSolarium,EquConfortAutre,EquConfortAucun,EquDemarcheHQE,EquSaeNbCouloir,EquSaeHauteur,EquSaeSurface,EquNatureSignal,EquNatureAlert,EquNatureAcPubPed,EquNatureAcPubRout,EquNatureAcPubMec,EquNatureAcPubNau,EquNatureAcSecPed,EquNatureAcSecRout,EquNatureAcSecMec,EquNatureAcSecNau,EquNatureLocTec,EquNatureLocPed,EquNatureAutorise,EquNaturePDESI,EquipNatureSituationLib,EquNatureSEVoies,EquNatureClassFedeMini,EquNatureClassFedeMaxi,EquNatureESTour,EquNatureAETreuil,EquNatureSKTotalRemontee,equipmentTir10,equipmentTir25,equipmentTir50,equipmentTir100,equipmentTir200,equipmentTir300,equipmentTirPlateau,equipmentTirAutre,EquAthDev,EquAthLongLigneDroite,EquAthNbCouloirLigne,EquAthNbCouloirHorsLigne,EquAthRiviere,EquNatSurv,EquAthNbSautTotal,EquAthNbSautHauteur,EquAthNbSautLongueur,EquAthNbSautTriple,EquAthNbSautPerche,EquAthNbLancerTotal,EquAthNbPoids,EquAthNbDisque,EquAthNbJavelot,EquAthNbMarteau,EquAthNBMarteauMixte,EquNatFormeLib,EquNatLongueurBassin,EquNatLargeurBassin,EquNatSurfaceBassin,EquNatProfMini,EquNatProfMax,EquNatCouloir,EquNatSurfacePlageBassin,EquNatNbTTotal,EquNatNbT1,EquNatNbT3,EquNatNbPTotal,EquNatNbP3,EquNatNbP5,EquNatNbP7,EquNatNbP10,EquNatMaV,EquNatTobog,EquNatPentaglisse,EquNatRiviere,EquNatImHandi,EquNatFM,EquNatMM,EquNatEclSub,EquNatSonorisationSub,EquNatAutre,EquPresencePataugeoir,EquGpsX,EquGpsY,EquDateMaj
