@@ -4,14 +4,14 @@ Pauline CHABAUD and Corentin MAY
 
 ## To create a DataBase
 ```bash
-git clone https://github.com/coco18/TD6.git
+git clone https://github.com/coco18/projet-python.git
 cd projet-python
-./main.py
+python3 main.py
 ```
 
 ## To start a server
 ```bash
-./server.py
+python3 server.py
 ```
 
 ## To use a application got to :

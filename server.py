@@ -62,7 +62,7 @@ def server_static(filepath):
 def style(filename):
     return static_file(filename, root='web/css/')
 
-@route("/img/<filename>")
+@route("/images/<filename>")
 def img(filename):
 	return static_file(filename,root="web/img/")
 
