@@ -27,11 +27,13 @@ def city():
 def city():
     DB = Db()
     e = Equipment()
-    activity = request.query.activity
+    id_activity = request.query.activity
     city = request.query.city
-    list_equipment = e.select_place_of_activity_in_city(DB, activity, city)
+    list_equipment = e.select_place_of_activity_in_city(DB, id_activity, city)
+    activity = Activity()
+    activity.select(DB, id_activity)
     DB.deconnect()
-    return template("web/activity", list_equipment=list_equipment)
+    return template("web/activity", acivity=activity, city=city, list_equipment=list_equipment)
 
 
 @route('/equipment', method='GET')

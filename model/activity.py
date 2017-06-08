@@ -30,6 +30,16 @@ class Activity:
         insert_query = "INSERT INTO activity(id, name_activity, level_activity) VALUES (?, ?, ?)"
         c.execute(insert_query, (self.id, self.name_activity, self.level_activity))
 
+    """select activity in database"""
+    def select(self, db, idactivity):
+        c = db.con.cursor()
+        query = "SELECT * FROM activity WHERE id={0} ".format(idactivity)
+        c.execute(query)
+        row = c.fetchone()
+        self.id = row[0]
+        self.name_activity = row[1]
+        self.level_activity = row[2]
+
     def select_list(self, DB):
         c = DB.con.cursor()
         query =  "SELECT * FROM activity "
