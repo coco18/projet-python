@@ -29,7 +29,7 @@
 			<!-- Banner -->
 						<section id="banner">
 							<header>
-								<h2>Activités sportive en Pays de la Loire</h2>
+								<h2>Activités sportives en Pays de la Loire</h2>
 							</header>
 							<p>Ce site permet de rechercher les activités sportives disponibles en Pays de la Loire</p>
 							<img src="images/logoPDL.jpg" alt="" />
@@ -40,7 +40,7 @@
 
 
 								<header>
-									<h2>Recherche du lieux où est pratiqué l'activité :</h2>
+									<h2>Recherche du lieu où est pratiqué l'activité :</h2>
 									<form method="GET" action="/search">
 												<div class="row 50%">
 												<div class="12u$">
