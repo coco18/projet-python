@@ -1,8 +1,8 @@
 #!bin/bash
-rm doc
+rm -R doc
 mkdir doc
 for x in $(find * -type d -prune)
 do
     pydoc -w $x/*.py
-    mv ./*.html -t ./doc
 done
+mv ./*.html -t ./doc

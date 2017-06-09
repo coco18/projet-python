@@ -6,6 +6,7 @@ from model.equipment import Equipment
 
 @route('/')
 def index():
+    """Display the welcome page"""
     DB = Db()
     a = Activity()
     p = Place()
@@ -16,6 +17,7 @@ def index():
 
 @route('/city', method='POST')
 def city():
+    """Display the page who contains the list of the activities in a city """
     DB = Db()
     a = Activity()
     city = request.forms.city
@@ -25,6 +27,7 @@ def city():
 
 @route('/activity', method='GET')
 def city():
+    """Display the page who contains the list of the equipment """
     DB = Db()
     e = Equipment()
     id_activity = request.query.activity
@@ -38,6 +41,7 @@ def city():
 
 @route('/equipment', method='GET')
 def city():
+    """Display the page who display an equipment """
     DB = Db()
     e = Equipment()
     p = Place()
@@ -50,6 +54,7 @@ def city():
 
 @route('/search', method='GET')
 def default():
+    """Display the page who display the list of the equipment for an activity  """
     DB = Db()
     act = request.query.activity
     list_equipment=Equipment().search(DB,"'"+act+"'")
@@ -58,18 +63,22 @@ def default():
 
 @route('/<filepath:path>')
 def server_static(filepath):
+    """Root to the repertory web """
     return static_file(filepath, root='./web/')
 
 @route("/css/<filename>")
 def style(filename):
+    """Root to the repertory web/ccs """
     return static_file(filename, root='web/css/')
 
 @route("/images/<filename>")
 def img(filename):
-	return static_file(filename,root="web/img/")
+    """Root to the repertory web/img """
+    return static_file(filename,root="web/img/")
 
 @route("/js/<filename>")
 def script(filename):
+    """Root to the repertory web/js """
     return static_file(filename, root='web/js/')
 
 run(host='localhost', port=8081, debug=True)
