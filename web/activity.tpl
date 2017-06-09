@@ -6,10 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="css/main.css" />
-
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+
+		<style>
+	       .map {
+	        height: 400px;
+	        width: 100%;
+	       }
+	    </style>
+
 	</head>
 	<body>
+
+
 
 
 
@@ -22,7 +31,7 @@
     						<header>
 									<ul>
                   % for e in list_equipment:
-                    <li class="afficherDetailEquipement" id="{{e.id}}"><a  href="/equipment?id={{e.id}}">{{e.name_equipment}} à {{e.place.city}}</a>
+                    <li class="afficherDetailEquipement" ><a  href="#">{{e.name_equipment}} à {{e.place.city}}</a>
 										<div class="detailEquipement">
 											<table>
 									      <tr>
@@ -43,9 +52,51 @@
 									        </td>
 									      </tr>
 									    </table>
+
+
+
+
+											 AIzaSyDPKF_pbGPwKpfAsZMmmqGQh0YxbG_9mr4
+
 										</div></li>
                   % end
 								</ul>
+
+
+
+								<div class="map" id="a"></div>
+										<script>
+
+
+
+										function initMap() {
+
+
+
+												var uluru = {lat: {{list_equipment[0].place.latitude}}, lng: {{list_equipment[0].place.longitude}}};
+												var map = new google.maps.Map(document.getElementById('a'), {
+													zoom: 4,
+													center: uluru
+												});
+
+												var marker = new google.maps.Marker({
+													position: uluru,
+													map: map
+												});
+
+												% for e in list_equipment:
+												var c{{e.id}} = {lat: {{e.latitude}}, lng: {{e.longitude}} };
+
+												var marker{{e.id}} = new google.maps.Marker({
+													position: c{{e.id}},
+													map: map
+												});
+												% end
+}
+										</script>
+										<script async defer
+										src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe5oWItPZuTWdsUJyl500vhoLSxN4cs5s&callback=initMap">
+										</script>
     						</header>
     				</article>
 
@@ -63,9 +114,7 @@
 
 					$(".detailEquipement").toggle();
 					$(".afficherDetailEquipement").click(function (event) {
-						index = $(this).val("id")
-							alert($(this).position());
-					//	$(event.target.id).children(".detailEquipement").css("display", "block");
+						$(this).children(".detailEquipement").toggle()
 						event.preventDefault();
 					});
 					});

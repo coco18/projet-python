@@ -19,8 +19,29 @@
               <head>
     <h2>Liste des équipements pour {{act}}</h2>
     <ul>
-      % for e in list_equipment:
-        <li><a href="/equipment?id={{e.id}}">{{e.name_equipment}} à {{e.place.city}}</a></li>
+			% for e in list_equipment:
+			<li class="afficherDetailEquipement" id="{{e.id}}"><a href="#">{{e.name_equipment}} à {{e.place.city}}</a>
+			<div class="detailEquipement">
+				<table>
+					<tr>
+						<td>
+							Nom de l'équipement :
+						</td>
+						<td>
+							{{e.name_equipment}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Adresse :
+						</td>
+						<td>
+							{{e.place.num_street}} {{e.place.street}}
+							{{e.place.city_code}} {{e.place.city}}
+						</td>
+					</tr>
+				</table>
+			</div></li>
       % end
     </ul>
 
@@ -37,7 +58,16 @@
   			<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
   			<script src="js/main.js"></script>
 
+				<script type="text/javascript">
+				$(document).ready(function(){
 
+				$(".detailEquipement").toggle();
+				$(".afficherDetailEquipement").click(function (event) {
+					$(this).children(".detailEquipement").toggle()
+					event.preventDefault();
+				});
+				});
+				</script>
 				<section id="footer">
 
 							<div class="copyright">

@@ -14,7 +14,7 @@ class Db:
         cur.execute("DROP TABLE IF EXISTS place")
         cur.execute("CREATE TABLE place(id integer PRIMARY KEY, name_place text, num_street integer, street text, place_says text, city text, city_code integer, longitude integer, latitude integer)")
         cur.execute("DROP TABLE IF EXISTS equipment")
-        cur.execute("CREATE TABLE equipment(id integer PRIMARY KEY, name_equipment text, num_place integer, FOREIGN KEY(num_place) REFERENCES place(id))")
+        cur.execute("CREATE TABLE equipment(id integer PRIMARY KEY, name_equipment text, num_place integer, latitude integer, longitude integer, FOREIGN KEY(num_place) REFERENCES place(id))")
         cur.execute("DROP TABLE IF EXISTS activity")
         cur.execute("CREATE TABLE activity(id integer PRIMARY KEY, name_activity text, level_activity text)")
         cur.execute("DROP TABLE IF EXISTS equipmentactivity")
