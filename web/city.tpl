@@ -17,7 +17,7 @@
     	<!-- Feature 1 -->
     				<article id="tree" class="container box style1 right">
 
-                <h2>Liste des activtées à {{city}}</h2>
+                <h2>Liste des activités à {{city}}</h2>
     <ul>
       % for a in list_activity:
         <li><a href="/activity?activity={{a.id}}&city={{city}}">{{a.name_activity}}</a></li>

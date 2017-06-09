@@ -9,7 +9,7 @@ DB = Db()
 DB.create_table()
 DB.commit()
 
-#Insert in db of place
+#Insert the table place in database
 file = FileCSV('fichiersCSV/23440003400026_J335_installations_table.csv')
 csv = file.print_line_except_first()
 for row in csv:
@@ -18,7 +18,7 @@ for row in csv:
     p.insert(DB)
 DB.commit()
 
-#Insert in db equipment
+#Insert the table equipment in database
 file = FileCSV('fichiersCSV/equipements.csv')
 csv = file.print_line_except_first()
 for row in csv:
@@ -27,7 +27,7 @@ for row in csv:
     e.insert(DB)
 DB.commit()
 
-#Insert in db of activity
+#Insert the table activity in database
 file = FileCSV('fichiersCSV/J334_equipements_activites.csv')
 csv = file.print_line_except_first()
 for row in csv:
@@ -38,7 +38,7 @@ for row in csv:
             a.insert_in_DB(DB)
 DB.commit()
 
-#Insert in db of equipement-activity
+#Insert the table equipmentactivity in database
 csv = file.print_line_except_first()
 for row in csv:
     ea = EquipmentActivity()
