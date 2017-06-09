@@ -13,15 +13,15 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<h1>Rechercher une activitée sportive en Pays de la Loire</h1>
+					<h1>Rechercher une activité sportive en Pays de la Loire</h1>
 					<p>Pauline Chabaud et Corentin May</p>
 					<br>
 					<br>
 				</header>
 				<footer>
-					<a href="#first" class="button style2 scrolly-middle">Lieux où pratiqué une activitée</a>
-					<a href="#second" class="button style2 scrolly-middle">Liste des activitées dans ma ville</a>
-					<a href="#tree" class="button style2 scrolly-middle">Activitée dans ma ville</a>
+					<a href="#first" class="button style2 scrolly-middle">Lieux où pratiquer une activité</a>
+					<a href="#second" class="button style2 scrolly-middle">Liste des activités dans ma ville</a>
+					<a href="#tree" class="button style2 scrolly-middle">Activité dans ma ville</a>
 				</footer>
 			</section>
 
@@ -29,9 +29,9 @@
 			<!-- Banner -->
 						<section id="banner">
 							<header>
-								<h2>Activitées sportive en Pays de la Loire</h2>
+								<h2>Activités sportive en Pays de la Loire</h2>
 							</header>
-							<p>Ce site permet de rechercher les activitées sportives disponnibles en Pays de la Loire</p>
+							<p>Ce site permet de rechercher les activités sportives disponibles en Pays de la Loire</p>
 							<img src="images/logoPDL.jpg" alt="" />
 						</section>
 
@@ -97,7 +97,7 @@
 
 
 						<header>
-							<h2>Recherche une activitée dans ma ville :</h2>
+							<h2>Recherche une activité dans ma ville :</h2>
 								<form class="" action="/activity" method="get">
 									<div class="row 50%">
 										<div class="6u 12u$(mobile)"><select class="" name="city">
