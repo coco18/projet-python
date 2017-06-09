@@ -9,7 +9,7 @@ class Db:
         self.con = sqlite3.connect("db/data.db")
 
     def create_table(self):
-    """create the table to create our database"""
+        """create the table to create our database"""
         cur = self.con.cursor()
         cur.execute("DROP TABLE IF EXISTS place")
         cur.execute("CREATE TABLE place(id integer PRIMARY KEY, name_place text, num_street integer, street text, place_says text, city text, city_code integer, longitude integer, latitude integer)")
@@ -39,13 +39,13 @@ class Db:
         return c.fetchall()
 
     def searchcity(self,activity,equipment):
-    	"""Return the place where you can find an activity cith a specific equipment
+        """Return the place where you can find an activity with a specific equipment
     	:param activity: the activity choose
     	:type activity: String
     	:param equipment: the equipment choose
     	:type equipment: String
-    	:return c: value return by the query
-    	:rtype c : ?
+        :return c: value return by the query
+    	:rtype c: ?
     	"""
         c = self.con.cursor()
         query = "SELECT * from place where id in (SELECT num_place from equipment where name_equipment= {1} and id IN (SELECT id_equipment from equipmentactivity where id_activity in (SELECT id FROM activity  where name_activity = {0})))".format(activity,equipment)

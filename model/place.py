@@ -3,7 +3,7 @@ import locale
 class Place:
     """Docstring for place"""
     def __init__(self):
-    	"""Initialization of the place"""
+        """Initialization of the place"""
         self.id = None
         self.name_place = None
         self.num_street = None
@@ -15,12 +15,12 @@ class Place:
         self.latitude = None
 
 
-    
+
     def create_object(self, tab):
-    	"""Creation of the place
+        """Creation of the place
     	:param tab: Array with the attribute of a place
-    	:type tab: array 
-    	"""
+    	:type tab: array
+        """
         self.id = tab[1]
         self.name_place = tab[0]
         self.num_street = tab[6]
@@ -31,15 +31,15 @@ class Place:
         self.longitude = tab[9]
         self.latitude = tab[10]
 
-    
+
     def select(self, db, num_place):
-    	"""Give a place from the table place
+        """Give a place from the table place
     	:param db: the base who contains the table
     	:type db: base
-    	:param num_place: the identifiant of the place 
+    	:param num_place: the identifiant of the place
     	:type num_place: int
     	:returns: p
-    	:rtype: Place 
+    	:rtype: Place
     	"""
         print(num_place)
         c = db.con.cursor()
@@ -59,13 +59,13 @@ class Place:
         return p
 
     def select_id_by_city(self, db, city):
-    	"""Give the id of places in a city
+        """Give the id of places in a city
     	:param db: the base who contains the table
     	:type db: base
-    	:param city: the name of the city 
+    	:param city: the name of the city
     	:type city: name
     	:returns: tab
-    	:rtype: Place[] 
+    	:rtype: Place[]
     	"""
         c = db.con.cursor()
         lcity = "'"+city+"'"
@@ -87,11 +87,11 @@ class Place:
         c.execute(insert_query, (self.id, self.name_place, self.num_street, self.street, self.place_says, self.city, self.city_code, self.longitude, self.latitude))
 
     def select_list_city(self, db):
-    	"""Give all the city where all the places are
+        """Give all the city where all the places are
     	:param db: the base who contains the table
     	:type db: base
     	:returns: x
-    	:rtype: String[] 
+    	:rtype: String[]
     	"""
         c = db.con.cursor()
         query =  "SELECT city FROM place "

@@ -10,9 +10,9 @@ class Equipment:
         self.place = None
 
     def create_object(self, tab):
-      	"""Creation of the equipment
+        """Creation of the equipment
     	:param tab: Array with the attribute of an equipment
-    	:type tab: array 
+    	:type tab: array
     	"""
         self.id = tab[4]
         self.name_equipment = tab[5]
@@ -62,7 +62,7 @@ class Equipment:
         """Assign the value of the equipment passes in parameters to the actual equipment
     	:param db: the base who contains the table
     	:type db: base
-    	:param idequipment: the identifiant of the equipment 
+    	:param idequipment: the identifiant of the equipment
     	:type idequipment: int
     	"""
         c = db.con.cursor()
@@ -88,10 +88,10 @@ class Equipment:
         """Give the existing equipment where you can practice an activity in a city
     	:param db: the base who contains the table
     	:type db: base
-    	:param city: the name of the city 
+    	:param city: the name of the city
     	:type city: name
     	:returns: tab
-    	:rtype: Equipment[] 
+    	:rtype: Equipment[]
     	"""
         c = DB.con.cursor()
         tab=[]
