@@ -1,5 +1,4 @@
 from model.place import Place
-from geopy.geocoders import Nominatim
 
 class Equipment:
     """docstring for equipment"""

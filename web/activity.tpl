@@ -53,11 +53,6 @@
 									      </tr>
 									    </table>
 
-
-
-
-											 AIzaSyDPKF_pbGPwKpfAsZMmmqGQh0YxbG_9mr4
-
 										</div></li>
                   % end
 								</ul>
