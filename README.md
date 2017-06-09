@@ -1,5 +1,5 @@
 # Projet python
-
+#A site web to find a sportiv activity, an equipment for it and the place of it
 Pauline CHABAUD and Corentin MAY
 
 ## To create a DataBase
